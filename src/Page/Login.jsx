@@ -50,18 +50,20 @@ export default function SignInSide() {
         const token = res.data.token
         const role = res.data.payload.user.role
         const name = res.data.payload.user.name
+        const active = res.data.payload.user.active
         loginDispatch(loginRedux({
           name: name,
           role: role,
-          token: token
+          token: token,
+          active: active
         }))
         localStorage.setItem('token', token)
-        roleRedirect(role)
+        roleRedirect(role, active)
       }).catch((err) => console.log(err))
   };
 
-  const roleRedirect = (role) => {
-    if (role === "admin") {
+  const roleRedirect = (role, active) => {
+    if (role === "admin" && active === true) {
       navigate("/dashboard")
     } else {
       navigate("/user")

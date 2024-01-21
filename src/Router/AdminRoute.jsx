@@ -13,7 +13,7 @@ const AdminRoute = ({ children }) => {
   try {
     currentAdmin(user.user.token)
       .then((res) => {
-
+        console.log('AdminRoute:', res.data)
         setAdminRole(true)
       }).catch((err) => {
         setAdminRole(false)
