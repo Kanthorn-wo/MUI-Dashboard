@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { list, changeRole } from '../Function/ManageUser';
+import { list, changeRole, userActive } from '../Function/ManageUser';
 import { useSelector } from 'react-redux';
 import Switch from '@mui/material/Switch';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,7 +9,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 const Settings = () => {
   const [data, setData] = useState([]);
-  const [isActive, setIsActive] = useState(true);
   const user = useSelector((state) => state.user);
   const roleSelect = ['admin', 'user']
   useEffect(() => {
@@ -32,10 +31,19 @@ const Settings = () => {
     console.log(`ID ${id}`);
 
   };
-  const handleToggleActive = (event, userId) => {
-    alert(`event :${event.target.checked} Id:${userId}`)
+  const handleToggleActive = (event, id) => {
 
-
+    const value = {
+      id: id,
+      active: event.target.checked
+    }
+    userActive(user.user.token, value)
+      .then((res) => {
+        console.log('userActive', res.data)
+        getUserList(user.user.token)
+      }).catch((err) => {
+        console.log(err)
+      })
   };
 
   const handleRoleChange = async (event, id) => {
@@ -79,14 +87,13 @@ const Settings = () => {
     },
     {
       field: 'switch',
-      headerName: 'ON/OFF',
+      headerName: 'Active',
       flex: 1,
       renderCell: (params) => (
         <Switch {...label}
-          checked={isActive}
           onChange={(event) => handleToggleActive(event, params.row._id)}
-        // defaultChecked
-
+          checked={params.row.active}
+          color='primary'
         />
       ),
     },
@@ -126,10 +133,10 @@ const Settings = () => {
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 0, pageSize: 10 },
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[10, 20, 30]}
         // checkboxSelection
         getRowId={getRowId} // Set the getRowId prop
 

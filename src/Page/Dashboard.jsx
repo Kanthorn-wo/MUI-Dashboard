@@ -16,6 +16,7 @@ const Dashboard = () => {
     <>
       <h1>Name:{user.user.name}</h1>
       <h1>role:{user.user.role}</h1>
+      <h1>active:{user.user.active ? 'true' : 'false'}</h1>
       <p>
         Token:
         <small>
