@@ -98,10 +98,13 @@ export default function SideBar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    dispatch(logout());
-    navigate('/login');
-  };
+    const shouldLogout = window.confirm('Are you sure you want to log out?');
+    if (shouldLogout) {
+      localStorage.removeItem('token');
+      dispatch(logout());
+      navigate('/login');
+    };
+  }
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -226,7 +229,7 @@ export default function SideBar() {
             </ListItemButton>
           </ListItem>
           {/* logout */}
-          <ListItem disablePadding sx={{ display: 'block', marginTop: 'auto' }} onClick={handleLogout} >
+          <ListItem disablePadding sx={{ display: 'block', marginTop: 'auto' }} onClick={handleLogout} style={{ color: 'red' }} >
             <ListItemButton
               sx={{
                 minHeight: 48,
@@ -241,7 +244,7 @@ export default function SideBar() {
                   justifyContent: 'center',
                 }}
               >
-                <LogoutIcon />
+                <LogoutIcon style={{ color: 'red' }} />
               </ListItemIcon>
 
               <ListItemText primary="Logout" sx={{ opacity: open ? 1 : 0 }} />
