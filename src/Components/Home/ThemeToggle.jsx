@@ -1,7 +1,7 @@
 // ThemeToggle.js
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import styled from 'styled-components';
+import styled, { StyleSheetManager } from 'styled-components';
 
 const ThemeToggle = ({ children }) => {
   const storedDarkMode = localStorage.getItem('darkMode');
@@ -16,7 +16,7 @@ const ThemeToggle = ({ children }) => {
   };
 
   return (
-    <div>
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== 'isDarkMode'}>
       <Wrapper isDarkMode={isDarkMode}>
         <Topnav>
           Hello World!
@@ -26,36 +26,34 @@ const ThemeToggle = ({ children }) => {
             type='checkbox'
             checked={isDarkMode}
             onChange={toggleTheme}
-            color="default"
           />
           <span className='slider'></span>
         </label>
       </Wrapper>
 
       <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
-        {children}
+        {React.Children.map(children, (child) => {
+          return React.cloneElement(child, { isDarkMode: isDarkMode });
+        })}
       </div>
-    </div>
+    </StyleSheetManager>
   );
 };
 
 export default ThemeToggle;
 
 const Topnav = styled.div`
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 `
 
 const Wrapper = styled.section`
-    padding: 1.2rem;
-    font-size: 1.2rem;
-    border-bottom: 0.1rem solid var(--c-grey-100);
-    font-weight: 400;
-    font-family: var(--f-2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    background-color: ${props => props.isDarkMode ? 'white' : '#333333'};
-    color: ${props => props.isDarkMode ? '#333333' : '#ffffff'};
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: ${props => props.isDarkMode ? '#333333' : '#ffffff'};
+  color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
 `;

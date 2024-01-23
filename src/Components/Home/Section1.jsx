@@ -1,11 +1,17 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { TypeAnimation } from 'react-type-animation';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { Link } from 'react-router-dom';
 const Section1 = () => {
   return (
     <ContainerSection1>
       <AboutMe>
         About Me
+        <Link>
+          <OpenInNewIcon style={{ marginLeft: '15px' }} />
+        </Link>
+
         <FullName style={{ marginTop: '0' }}>
           Kanthron Wongsoma
         </FullName>
@@ -40,7 +46,7 @@ const ContainerSection1 = styled.section`
   padding: 20vh calc(5vw + 1rem) 10vh; 
   min-height: 50vh;
   background-color: var(--c-white);
-  border: 1px solid black;
+
 
   @media screen and (max-width: 768px) {
     padding: 10vh calc(2.5vw + 0.5rem) 5vh; 

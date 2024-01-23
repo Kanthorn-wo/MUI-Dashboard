@@ -7,7 +7,7 @@ import Tools from './Skill/Tools'
 const Section3 = () => {
   return (
     <ContainerSection3>
-      <h2>Skill</h2>
+      <h1 style={{ marginBottom: '20px' }}>Skill</h1>
       <FrontEnd />
       <BackEnd />
       <Tools />
