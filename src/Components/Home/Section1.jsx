@@ -26,8 +26,7 @@ const Section1 = ({ isDarkMode }) => {
           1000,
           `I'm Back-End Developer`,
           1000,
-          `I'm Full-Stack Developer`,
-          1000,
+
         ]}
         wrapper="span"
         speed={50}
@@ -73,7 +72,6 @@ const FullName = styled.p`
 const AboutMe = styled.h1`
   font-size: 3rem;
   font-weight: 300;
-  font-family: var(--f-1);
   margin-bottom: 4rem;
   color: ${(props) => (props.isDarkMode ? '#ffffff' : '#333333')};
 `;

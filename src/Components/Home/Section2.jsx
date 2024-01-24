@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Section2 = ({ isDarkMode }) => {
   return (
     <ContainerSection2 isDarkMode={isDarkMode}>
-      <h1>My Project</h1>
+      <TitleProject>My Project</TitleProject>
 
       <Content >
         <Box>Comming Soon...</Box>
@@ -18,6 +18,11 @@ const Section2 = ({ isDarkMode }) => {
 };
 
 export default Section2;
+
+const TitleProject = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 400;
+`
 
 const ContainerSection2 = styled.div`
   background: ${(props) =>
@@ -37,7 +42,6 @@ const Content = styled.section`
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
   grid-gap: 4.2rem 6rem;
   gap: 4.2rem 6rem;
-  border: 1px solid black;
   margin-top: 30px;
 `;
 
@@ -49,6 +53,13 @@ const Box = styled.div`
     display: flex;
     flex-direction: column;
     justify-self: stretch;
-    background-color: aqua;
+    background: linear-gradient(135deg,rgba(255,255,255,0.1)rgba(255.255.255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+    text-align: center;
+    justify-content: center;
 `;
 

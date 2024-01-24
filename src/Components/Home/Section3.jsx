@@ -7,7 +7,7 @@ import Tools from './Skill/Tools'
 const Section3 = ({ isDarkMode }) => {
   return (
     <ContainerSection3 isDarkMode={isDarkMode}>
-      <h1 style={{ marginBottom: '20px' }}>Skill</h1>
+      <TitleSkill >Skill</TitleSkill>
       <FrontEnd />
       <BackEnd />
       <Tools />
@@ -28,3 +28,10 @@ const ContainerSection3 = styled.section`
       ? '#ffffff' //dark
       : '#333333'};
 `
+const TitleSkill = styled.h1`
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+
+`
+
