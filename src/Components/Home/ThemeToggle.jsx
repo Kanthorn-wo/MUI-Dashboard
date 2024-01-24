@@ -1,61 +1,45 @@
-// ThemeToggle.js
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
-import styled from 'styled-components';
+import { StyleSheetManager } from 'styled-components';
+import TopNav from './TopNav';
+import ParticlesBg from 'particles-bg';
+import Section1 from './Section1';
+import Section2 from './Section2';
+import Section3 from './Section3';
+import Footer from './Footer';
 
-const ThemeToggle = ({ children }) => {
+const ThemeToggle = () => {
+  // Retrieve dark mode state from localStorage or default to false
   const storedDarkMode = localStorage.getItem('darkMode');
   const [isDarkMode, setIsDarkMode] = useState(storedDarkMode === 'true');
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', isDarkMode);
-  }, [isDarkMode]);
 
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-  return (
-    <div>
-      <Wrapper isDarkMode={isDarkMode}>
-        <Topnav>
-          Hello World!
-        </Topnav>
-        <label className='switch'>
-          <input
-            type='checkbox'
-            checked={isDarkMode}
-            onChange={toggleTheme}
-            color="default"
-          />
-          <span className='slider'></span>
-        </label>
-      </Wrapper>
+  // Update localStorage when dark mode changes
+  useEffect(() => {
+    localStorage.setItem('darkMode', isDarkMode);
+    document.body.style.backgroundColor = isDarkMode ? '#333333' : '#ffffff';
+  }, [isDarkMode]);
 
-      <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
-        {children}
-      </div>
-    </div>
+  return (
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== 'isDarkMode'}>
+      <>
+        <TopNav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+        <ParticlesBg
+          type="cobweb"
+          bg={true}
+          color={isDarkMode ? '#ffffff' : '#000000'}
+          num={isDarkMode ? 250 : 250}
+        />
+        <Section1 isDarkMode={isDarkMode} />
+        <Section2 isDarkMode={isDarkMode} />
+        <Section3 isDarkMode={isDarkMode} />
+        <Footer />
+      </>
+    </StyleSheetManager>
   );
 };
 
 export default ThemeToggle;
-
-const Topnav = styled.div`
-    color: inherit;
-    text-decoration: none;
-`
-
-const Wrapper = styled.section`
-    padding: 1.2rem;
-    font-size: 1.2rem;
-    border-bottom: 0.1rem solid var(--c-grey-100);
-    font-weight: 400;
-    font-family: var(--f-2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    background-color: ${props => props.isDarkMode ? 'white' : '#333333'};
-    color: ${props => props.isDarkMode ? '#333333' : '#ffffff'};
-`;
