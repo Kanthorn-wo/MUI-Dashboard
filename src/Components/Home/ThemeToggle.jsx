@@ -6,7 +6,7 @@ import ParticlesBg from 'particles-bg';
 import Section1 from './Section1';
 import Section2 from './Section2';
 import Section3 from './Section3';
-import Footer from './Footer';
+import WaveFooter from './Footer';
 
 const ThemeToggle = () => {
   // Retrieve dark mode state from localStorage or default to false
@@ -17,7 +17,7 @@ const ThemeToggle = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-  // Update localStorage when dark mode changes
+
   useEffect(() => {
     localStorage.setItem('darkMode', isDarkMode);
     document.body.style.backgroundColor = isDarkMode ? '#333333' : '#ffffff';
@@ -31,12 +31,12 @@ const ThemeToggle = () => {
           type="cobweb"
           bg={true}
           color={isDarkMode ? '#ffffff' : '#000000'}
-          num={isDarkMode ? 250 : 250}
+          num={isDarkMode ? 200 : 200}
         />
         <Section1 isDarkMode={isDarkMode} />
         <Section2 isDarkMode={isDarkMode} />
         <Section3 isDarkMode={isDarkMode} />
-        <Footer />
+        <WaveFooter isDarkMode={isDarkMode} />
       </>
     </StyleSheetManager>
   );

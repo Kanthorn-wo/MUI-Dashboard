@@ -18,3 +18,9 @@ export const SubSkillCard = styled.div`
   transition: all 0.2s ease;
   font-size: 2.4rem;
 `;
+
+export const SubTitleSkill = styled.h1`
+  font-size: 1rem;
+  font-weight: 400;
+
+`

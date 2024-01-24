@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContainerSkill, SkillCard, SubSkillCard } from './index.style';
+import { ContainerSkill, SkillCard, SubSkillCard, SubTitleSkill } from './index.style';
 const Tools = () => {
 
   const skillsData = [
@@ -14,7 +14,7 @@ const Tools = () => {
     {
       id: 2,
       icon: (
-        <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" />
+        <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" />
       ),
     },
     {
@@ -29,7 +29,7 @@ const Tools = () => {
   ];
   return (
     <>
-      <h3>Tools & Other</h3>
+      <SubTitleSkill>Tools & Other</SubTitleSkill>
       <ContainerSkill>
         {skillsData.map((skill) => (
           <SkillCard key={skill.id}>

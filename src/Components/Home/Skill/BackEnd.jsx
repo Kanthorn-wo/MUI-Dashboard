@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContainerSkill, SkillCard, SubSkillCard } from './index.style';
+import { ContainerSkill, SkillCard, SubSkillCard, SubTitleSkill } from './index.style';
 const BackEnd = () => {
 
   const skillsData = [
@@ -50,7 +50,7 @@ const BackEnd = () => {
   ];
   return (
     <>
-      <h3>Back-End / Database</h3>
+      <SubTitleSkill>Back-End / Database</SubTitleSkill>
       <ContainerSkill>
         {skillsData.map((skill) => (
           <SkillCard key={skill.id}>
