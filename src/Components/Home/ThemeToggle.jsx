@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import { StyleSheetManager } from 'styled-components';
 import TopNav from './TopNav';
-import ParticlesBg from 'particles-bg'
+import ParticlesBg from 'particles-bg';
 import Section1 from './Section1';
 import Section2 from './Section2';
 import Section3 from './Section3';
@@ -24,19 +24,21 @@ const ThemeToggle = () => {
   }, [isDarkMode]);
 
   return (
-    <>
-      <TopNav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <ParticlesBg
-        type="cobweb"
-        bg={true}
-        color={isDarkMode ? '#ffffff' : '#000000'}
-        num={isDarkMode ? 250 : 250}
-      />
-      <Section1 isDarkMode={isDarkMode} />
-      <Section2 isDarkMode={isDarkMode} />
-      <Section3 isDarkMode={isDarkMode} />
-      <Footer />
-    </>
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== 'isDarkMode'}>
+      <>
+        <TopNav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+        <ParticlesBg
+          type="cobweb"
+          bg={true}
+          color={isDarkMode ? '#ffffff' : '#000000'}
+          num={isDarkMode ? 250 : 250}
+        />
+        <Section1 isDarkMode={isDarkMode} />
+        <Section2 isDarkMode={isDarkMode} />
+        <Section3 isDarkMode={isDarkMode} />
+        <Footer />
+      </>
+    </StyleSheetManager>
   );
 };
 
