@@ -13,6 +13,7 @@ import UserRoute from './Router/UserRoute';
 import { currentUser } from './Function/Auth';
 import NotFound404 from './Page/NotFound404';
 import Home from './Page/Home';
+import Test from './Page/Test';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export default function App() {
 
   return (
     <>
+
       <BrowserRouter>
         <Routes>
           <Route path='/dashboard' element={<AdminRoute><Dashboard /></AdminRoute>} />
@@ -50,6 +52,7 @@ export default function App() {
           <Route path='/user' element={<UserRoute><User /></UserRoute>} />
           <Route path='/login' element={<Login />}></Route>
           <Route path='/' element={<Home />}></Route>
+          <Route path='/test' element={<Test />}></Route>
 
           <Route path='*' element={<NotFound404 />}></Route>
         </Routes>

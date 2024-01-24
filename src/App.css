@@ -118,9 +118,11 @@ input:checked + .slider:before{
 .light-mode {
   background-color: #ffffff;
   color: #333333;
+  z-index: -999;
 }
 
 .dark-mode {
   background-color: #333333;
   color: #ffffff;
+  z-index: -999;
 }
