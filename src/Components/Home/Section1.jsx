@@ -10,9 +10,9 @@ const Section1 = ({ isDarkMode }) => {
     <ContainerSection1>
       <AboutMe isDarkMode={isDarkMode}>
         About Me
-        <Link>
+        <a href='https://kanthorn-wo.github.io/Portfolio/'>
           <OpenInNewIcon style={{ marginLeft: '15px' }} />
-        </Link>
+        </a>
         <FullName isDarkMode={isDarkMode}>Kanthron Wongsoma</FullName>
       </AboutMe>
       <Paragraph isDarkMode={isDarkMode}>Computer Engineer</Paragraph>
