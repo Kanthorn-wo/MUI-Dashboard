@@ -13,7 +13,7 @@ const Footer = ({ isDarkMode }) => {
           <GitHubIcon />
         </div>
         <div>
-          <p>&copy; {currentYear} Portfolio. All rights reserved.</p>
+          <p>&copy; {currentYear} JarMoo . All rights reserved.</p>
         </div>
       </ContainerFooter>
 
