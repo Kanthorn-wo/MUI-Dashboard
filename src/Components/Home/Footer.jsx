@@ -10,7 +10,7 @@ const Footer = ({ isDarkMode }) => {
     <>
       <ContainerFooter isDarkMode={isDarkMode}>
         <div>
-          <GitHubIcon />
+          <GitHubIcon style={{ marginButton: "10px" }} />
         </div>
         <div>
           <p>&copy; {currentYear} JarMoo . All rights reserved.</p>
