@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import '../App.css'
+import { Container, Grid, Paper, Typography } from '@mui/material';
 const AddProduct = () => {
-  const [fadeIns, setFadeIns] = useState([false, false, false]);
 
-  useEffect(() => {
-    const timeouts = fadeIns.map((_, index) =>
-      setTimeout(() => setFadeIns((prev) => [...prev.slice(0, index), true, ...prev.slice(index + 1)]), (index + 1) * 1000)
-    );
-
-    return () => timeouts.forEach(clearTimeout);
-  }, [fadeIns]);
   return (
-    <>
-      <div>
-        {fadeIns.map((fadeIn, index) => (
-          <div key={index} className={`box ${fadeIn ? 'fade-in' : ''}`} style={{ backgroundColor: index === 0 ? 'red' : index === 1 ? 'blue' : 'green' }}></div>
-        ))}
-      </div>
-    </>
+
+    <Container>
+      <Grid item xs={12} md={12} lg={12}>
+        <Paper
+          sx={{
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            height: 240,
+          }}
+        >
+          <Typography variant="h6" gutterBottom>
+            Title
+          </Typography>
+          asdasdasdasd
+        </Paper>
+      </Grid>
+    </Container>
+
   )
 }
 

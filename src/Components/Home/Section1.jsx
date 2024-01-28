@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { TypeAnimation } from 'react-type-animation';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { Link } from 'react-router-dom';
 
 const Section1 = ({ isDarkMode }) => {
   console.log('isDarkMode', isDarkMode)
@@ -40,6 +39,7 @@ const Section1 = ({ isDarkMode }) => {
 export default Section1;
 
 const ContainerSection1 = styled.div`
+  height:100vh ;
   position: relative;
   padding: 20vh calc(5vw + 1rem) 10vh;
   min-height: 50vh;
