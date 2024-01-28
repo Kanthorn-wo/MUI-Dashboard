@@ -24,8 +24,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { logout } from '../Store/UserSlice'
-const drawerWidth = 240;
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const drawerWidth = 240;
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -102,6 +104,7 @@ export default function SideBar() {
     if (shouldLogout) {
       localStorage.removeItem('token');
       dispatch(logout());
+      toast.success('Logout Success')
       navigate('/login');
     };
   }

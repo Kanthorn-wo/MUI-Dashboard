@@ -58,3 +58,22 @@ export const userActive = async (authToken, data) => {
   return await makeRequest('post', 'user-active', data, authToken);
 };
 
+export const userUpdate = async (authToken, data, id) => {
+  return await axios.put(process.env.REACT_APP_API + '/user-update/' + id, data, {
+    headers: {
+      authToken
+    }
+  })
+};
+
+export const userDelete = async (authToken, id) => {
+  console.log('userDelete authToken:', authToken)
+  console.log('Delete ID:', id)
+
+  return await axios.delete(process.env.REACT_APP_API + '/user-delete/' + id, {}, {
+    headers: {
+      authToken
+    }
+  })
+};
+

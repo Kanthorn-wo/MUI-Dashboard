@@ -10,8 +10,8 @@ const AdminRoute = ({ children }) => {
   useEffect(() => {
     const fetchAdminStatus = async () => {
       try {
-        const response = await currentAdmin(user.user.token);
-        console.log('AdminRoute:', response.data);
+        await currentAdmin(user.user.token);
+
         setAdminRole(true);
       } catch (error) {
         setAdminRole(false);

@@ -14,6 +14,9 @@ import { currentUser } from './Function/Auth';
 import NotFound404 from './Page/NotFound404';
 import Home from './Page/Home';
 import Test from './Page/Test';
+import Register from './Page/Register'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,8 +29,10 @@ export default function App() {
           const res = await currentUser(idToken);
           console.log('App.jsx', res.data[0]);
           dispatch(login({
+            id: res.data[0]._id,
             name: res.data[0].name,
             role: res.data[0].role,
+            active: res.data[0].active,
             token: idToken
           }));
         }
@@ -43,6 +48,7 @@ export default function App() {
     <>
 
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route path='/dashboard' element={<AdminRoute><Dashboard /></AdminRoute>} />
           <Route path='/product' element={<AdminRoute><Product /></AdminRoute>} />
@@ -51,6 +57,7 @@ export default function App() {
 
           <Route path='/user' element={<UserRoute><User /></UserRoute>} />
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>
           <Route path='/' element={<Home />}></Route>
           <Route path='/test' element={<Test />}></Route>
 

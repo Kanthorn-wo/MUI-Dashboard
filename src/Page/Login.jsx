@@ -15,7 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login as loginRedux } from '../Store/UserSlice';
+import { login as setUserData } from '../Store/UserSlice';
+import { toast } from 'react-toastify';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -44,26 +45,36 @@ export default function SignInSide() {
       password: data.get('password')
     }
 
+    if (!doLogin.name || !doLogin.password) {
+      toast.error('Name and password are required. Please fill in all fields.');
+      return;
+    }
+
     await axios.post(process.env.REACT_APP_API + '/login/', doLogin)
       .then((res) => {
-        console.log('object', res.data)
+        console.log('Login.jsx', res.data)
         const token = res.data.token
-        const role = res.data.payload.user.role
-        const name = res.data.payload.user.name
-        const active = res.data.payload.user.active
-        loginDispatch(loginRedux({
+        const { id, name, role, active } = res.data.payload.user
+        loginDispatch(setUserData({
+          id: id,
           name: name,
           role: role,
           token: token,
           active: active
         }))
         localStorage.setItem('token', token)
+        toast.success(
+          res.data.massage
+        )
         roleRedirect(role, active)
-      }).catch((err) => console.log(err))
+      }).catch((err) => {
+        console.log('err', err)
+        toast.error(err.response.data.massage)
+      })
   };
 
   const roleRedirect = (role, active) => {
-    if (role === "admin" && active === true) {
+    if (role === "admin") {
       navigate("/dashboard")
     } else {
       navigate("/user")
@@ -113,6 +124,8 @@ export default function SignInSide() {
                 label="Name"
                 name="name"
                 type='text'
+
+
               />
               <TextField
                 margin="normal"
@@ -122,6 +135,8 @@ export default function SignInSide() {
                 label="Password"
                 type="password"
                 id="password"
+
+
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

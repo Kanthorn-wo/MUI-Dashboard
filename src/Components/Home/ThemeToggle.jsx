@@ -24,14 +24,15 @@ const ThemeToggle = () => {
   }, [isDarkMode]);
 
   return (
-    <StyleSheetManager shouldForwardProp={(prop) => prop !== 'isDarkMode'}>
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== 'isDarkMode'} style={{ minWidth: "500px" }}>
       <>
         <TopNav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <ParticlesBg
           type="cobweb"
           bg={true}
           color={isDarkMode ? '#ffffff' : '#000000'}
-          num={isDarkMode ? 200 : 200}
+          num={200}
+
         />
         <Section1 isDarkMode={isDarkMode} />
         <Section2 isDarkMode={isDarkMode} />

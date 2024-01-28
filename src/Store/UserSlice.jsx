@@ -10,12 +10,14 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.user = action.payload;
-      console.log('Login payload:', action.payload);
+      console.log('Redux payload:', action.payload);
     },
     logout: (state) => {
       state.user = {
+        id: '',
         name: '',
         role: '',
+        active: '',
         token: '',
       };
     },
