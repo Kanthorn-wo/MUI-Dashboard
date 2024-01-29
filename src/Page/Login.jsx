@@ -50,34 +50,44 @@ export default function SignInSide() {
       return;
     }
 
-    await axios.post(process.env.REACT_APP_API + '/login/', doLogin)
-      .then((res) => {
-        console.log('Login.jsx', res.data)
-        const token = res.data.token
-        const { id, name, role, active } = res.data.payload.user
-        loginDispatch(setUserData({
-          id: id,
-          name: name,
-          role: role,
-          token: token,
-          active: active
-        }))
-        localStorage.setItem('token', token)
-        toast.success(
-          res.data.massage
-        )
-        roleRedirect(role, active)
-      }).catch((err) => {
-        console.log('err', err)
-        toast.error(err.response.data.massage)
-      })
-  };
+    try {
+      const res = await axios.post(process.env.REACT_APP_API + '/login/', doLogin);
 
-  const roleRedirect = (role, active) => {
-    if (role === "admin") {
-      navigate("/dashboard")
-    } else {
-      navigate("/user")
+      console.log('Login.jsx - Server Response:', res.data);
+
+      if (!res.data || !res.data.token || !res.data.payload || !res.data.payload.user) {
+        // Handle unexpected response structure
+        console.error('Unexpected server response structure:', res.data);
+        toast.error('Unexpected server response structure. Please try again.');
+        return;
+      }
+
+      const token = res.data.token;
+      const { id, name, role, active } = res.data.payload.user;
+
+      loginDispatch(setUserData({
+        id: id,
+        name: name,
+        role: role,
+        token: token,
+        active: active
+      }));
+
+      localStorage.setItem('token', token);
+      toast.success(res.data.message);
+      roleRedirect(role);
+
+    } catch (err) {
+      console.log('Error:', err);
+      toast.error(err.response?.data?.message || 'An error occurred during login.');
+    }
+
+    const roleRedirect = (role) => {
+      if (role === "admin") {
+        navigate("/dashboard")
+      } else {
+        navigate("/user")
+      }
     }
   }
 
