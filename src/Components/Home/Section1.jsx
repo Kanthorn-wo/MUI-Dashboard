@@ -4,7 +4,8 @@ import { TypeAnimation } from 'react-type-animation';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const Section1 = ({ isDarkMode }) => {
-  console.log('isDarkMode', isDarkMode)
+
+
   return (
     <ContainerSection1>
       <AboutMe isDarkMode={isDarkMode}>
