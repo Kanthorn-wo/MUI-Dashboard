@@ -110,7 +110,7 @@ const Section2 = ({ isDarkMode }) => {
 
           </Stack>
           <Detail>
-            <h4>Touch New Web</h4>
+            <h4>Touch News Web</h4>
             <p>Project Mockup เว็บไซต์แสดงผลข่าวเชื่อมต่อ API จากระบบ CMS โปรเจคนี้รับผิดชอบแค่ดึงข้อมูลมาแสดงผล Layout และ CSS ในการจัดวางเพื่อแสดงผลข้อมูล ใช้ Figma ออกแบบ Wire Frame Prototype</p>
           </Detail>
         </Box>
