@@ -17,7 +17,7 @@ const Section1 = ({ isDarkMode }) => {
       </AboutMe>
       <Paragraph isDarkMode={isDarkMode}>Computer Engineer</Paragraph>
       <CostomTypeAnimation
-        key={isDarkMode}
+
         isDarkMode={isDarkMode}
         sequence={[
           `I'm`,

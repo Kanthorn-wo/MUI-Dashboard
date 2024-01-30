@@ -14,7 +14,7 @@ const Tools = () => {
     {
       id: 2,
       icon: (
-        <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" />
+        <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="80" height="80" />
       ),
     },
     {
