@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../App.css'
-import GitHubIcon from '@mui/icons-material/GitHub';
+
 
 const Footer = ({ isDarkMode }) => {
   const currentYear = new Date().getFullYear();
@@ -10,10 +10,7 @@ const Footer = ({ isDarkMode }) => {
     <>
       <ContainerFooter isDarkMode={isDarkMode}>
         <div>
-          <GitHubIcon style={{ marginButton: "10px" }} />
-        </div>
-        <div>
-          <p>&copy; {currentYear} JarMoo . All rights reserved.</p>
+          <p>&copy; {currentYear} Jàa Moo . All rights reserved.</p>
         </div>
       </ContainerFooter>
 
