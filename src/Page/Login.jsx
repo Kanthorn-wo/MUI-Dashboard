@@ -50,7 +50,7 @@ export default function SignInSide() {
       return;
     }
 
-    await axios.post('https://vercel.com/kanthorn-wos-projects/server-portfolio/api/login/', doLogin)
+    await axios.post(process.env.REACT_APP_API + '/login/', doLogin)
       .then((res) => {
         console.log('Login.jsx - Server Response:', res.data);
         const token = res.data.token;
@@ -66,20 +66,18 @@ export default function SignInSide() {
 
         localStorage.setItem('token', token);
         toast.success(res.data.message);
-        roleRedirect(role);
+        if (role === "admin") {
+          navigate("/dashboard")
+        } else {
+          navigate("/user")
+        }
       })
       .catch((err) => {
         console.log('Error:', err);
         toast.error(err.response?.data?.message || 'An error occurred during login.');
       });
 
-    const roleRedirect = (role) => {
-      if (role === "admin") {
-        navigate("/dashboard")
-      } else {
-        navigate("/user")
-      }
-    }
+
   }
 
   return (
