@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { TypeAnimation } from 'react-type-animation';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 const Section1 = ({ isDarkMode }) => {
-
+  const [textColor, setTextColor] = useState('black');
 
   return (
     <ContainerSection1>
@@ -16,23 +16,38 @@ const Section1 = ({ isDarkMode }) => {
         <FullName isDarkMode={isDarkMode}>Kanthron Wongsoma</FullName>
       </AboutMe>
       <Paragraph isDarkMode={isDarkMode}>Computer Engineer</Paragraph>
-      <CostomTypeAnimation
+      <div
+        style={{
+          fontSize: '35px',
+          color: textColor,
 
-        isDarkMode={isDarkMode}
-        sequence={[
-          `I'm`,
-          1000,
-          `I'm Front-End Developer`,
-          1000,
-          `I'm Back-End Developer`,
-          1000,
+        }}
+      >
+        <TypeAnimation
+          sequence={[
+            800,
+            () => setTextColor('aqua'),
+            '',
+            800,
+            () => setTextColor('aqua'),
+            'I\'m Front-End Developer',
+            800,
+            () => setTextColor('aqua'),
+            '',
+            800,
+            () => setTextColor('red'),
+            '',
+            800,
+            () => setTextColor('red'),
+            'I\'m Back-End Developer',
+            800,
+            () => setTextColor('red'),
+            '',
+          ]}
+          repeat={Infinity}
+        />
+      </div>
 
-        ]}
-        wrapper="span"
-        speed={50}
-        style={{ fontSize: '2em', display: 'inline-block', }}
-        repeat={Infinity}
-      />
     </ContainerSection1>
   );
 };
@@ -58,7 +73,8 @@ const ContainerSection1 = styled.div`
 const FullName = styled.p`
   display: block;
   font-weight: 600;
-  background-image: linear-gradient(175deg, #40cbf5, #b01fdf, #fdbb2d 75%);
+  background-image: ${(props) => (props.isDarkMode ? 'linear-gradient(175deg, #00f610, #40fee5, #af00ff 75%)' : 'linear-gradient(175deg, #40cbf5, #b01fdf, #fdbb2d 75%)')};
+  
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -87,6 +103,6 @@ const Paragraph = styled.p`
   color: ${(props) => (props.isDarkMode ? '#ffffff' : '#333333')};
 `;
 
-const CostomTypeAnimation = styled(TypeAnimation)`
-  color: ${(props) => (props.isDarkMode ? '#ffffff ' : '#333333')};
+const SkyBlueText = styled.span`
+  color: skyblue;
 `;
