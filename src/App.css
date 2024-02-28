@@ -45,17 +45,6 @@
   transition: opacity 1s ease;
 }
 
-#redBox {
-  background-color: red;
-}
-
-#blueBox {
-  background-color: blue;
-}
-
-#greenBox {
-  background-color: green;
-}
 
 .fade-in {
   opacity: 1;

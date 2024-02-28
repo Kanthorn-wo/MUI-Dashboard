@@ -17,6 +17,10 @@ export const SubSkillCard = styled.div`
   display: inline;
   transition: all 0.2s ease;
   font-size: 2.4rem;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const SubTitleSkill = styled.h1`
