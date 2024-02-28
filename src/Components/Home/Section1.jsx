@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { TypeAnimation } from 'react-type-animation';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -17,6 +17,7 @@ const Section1 = ({ isDarkMode }) => {
       </AboutMe>
       <Paragraph isDarkMode={isDarkMode}>Computer Engineer</Paragraph>
       <div
+
         style={{
           fontSize: '35px',
           color: textColor,
@@ -103,6 +104,3 @@ const Paragraph = styled.p`
   color: ${(props) => (props.isDarkMode ? '#ffffff' : '#333333')};
 `;
 
-const SkyBlueText = styled.span`
-  color: skyblue;
-`;

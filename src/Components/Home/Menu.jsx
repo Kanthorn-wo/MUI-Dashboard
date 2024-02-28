@@ -70,15 +70,7 @@ const ContainerMenu = styled.div`
   color: ${(props) => (props.isDarkMode ? '#fff' : '#000')};
 
   @media screen and (max-width: 768px) {
-    position: fixed;
-    z-index: 98;
-    display: flex;
-    margin-top: 85px;
-    justify-content: flex-start;
-    height: 100vh;
-    flex-direction: column;
-    box-sizing: border-box;
-    color: ${(props) => (props.isDarkMode ? '#fff' : '#000')};
+    display: none;
   }
 `;
 
@@ -94,12 +86,7 @@ const DropdownContainer = styled.div`
   max-height: ${(props) => (props.isOpen ? '200px' : '0')};
   max-width: ${(props) => (props.isOpen ? '100px' : '0')};
   transition: max-height 0.5s ease-in-out;
-  @media screen and (max-width: 768px) {
-    overflow: hidden;
-    max-height: ${(props) => (props.isOpen ? '200px' : '0')};
-    max-width: ${(props) => (props.isOpen ? '100px' : '0')};
-    transition: max-height 0.8s ease-in-out;
-  }
+  
 `;
 
 const FrameIcon = styled.div`
@@ -110,5 +97,22 @@ const FrameIcon = styled.div`
   justify-content: center;
   ${commonStyles}
   border: 0.5px solid ${(props) => (props.isDarkMode ? 'white' : 'black')};
+
+  a:link {
+    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+    text-decoration: none;
+  }
+  a:visited {
+    text-decoration: none;
+    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+  }
+  a:hover {
+    text-decoration: none;
+    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+  }
+  a:active {
+    text-decoration: none;
+    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+  }
   
 `;
