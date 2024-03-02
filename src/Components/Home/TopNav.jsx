@@ -36,9 +36,10 @@ const TopNav = ({ isDarkMode, toggleTheme }) => {
     <>
       <Wrapper isDarkMode={isDarkMode}>
         <Topnav>
-          <Logo>
-            <b>J</b>aa &nbsp;<b>M</b>oo
-          </Logo>
+          <StyledText isDarkMode={isDarkMode} href='#'>
+            <sapn>Jàa</sapn>
+            <sapn> Moo</sapn> {/* Note: There's a space before "Moo" to ensure spacing between the words */}
+          </StyledText>
 
           {menuOpen ? (
             <>
@@ -55,13 +56,12 @@ const TopNav = ({ isDarkMode, toggleTheme }) => {
                   </a>
                 </MenuItem>
 
-                {/* Add more menu items as needed */}
               </MenuItems>
 
             </>
           ) : (
             <HamburgerButton onClick={handleMenuToggle}>
-              &#9776; {/* Unicode character for hamburger menu */}
+              &#9776;
             </HamburgerButton>
           )}
         </Topnav>
@@ -109,22 +109,11 @@ const Wrapper = styled.section`
 const MenuItems = styled.div`
   display: flex;
   flex-direction: column;
-  
-  a:link {
-    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
-    text-decoration: none;
-  }
-  a:visited {
+  a {
     text-decoration: none;
     color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
-  }
-  a:hover {
-    text-decoration: none;
-    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
-  }
-  a:active {
-    text-decoration: none;
-    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+    display: flex;
+  align-items:center;
   }
   @media screen and (min-width: 768px) {
     display: none;
@@ -160,11 +149,7 @@ const CloseButton = styled.button`
   }
 `;
 
-const Logo = styled.div`
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
+
 
 
 const SwithDarkMode = styled.label`
@@ -172,4 +157,15 @@ const SwithDarkMode = styled.label`
   top: 1rem;
   right: 1rem;
   color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+
 `
+const StyledText = styled.a`
+  font-family: Arial, sans-serif; /* Choose a font */
+  font-size: 1.5rem; /* Set the font size */
+  color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
+  text-decoration: none;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+

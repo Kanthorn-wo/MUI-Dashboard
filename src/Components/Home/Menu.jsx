@@ -98,19 +98,7 @@ const FrameIcon = styled.div`
   ${commonStyles}
   border: 0.5px solid ${(props) => (props.isDarkMode ? 'white' : 'black')};
 
-  a:link {
-    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
-    text-decoration: none;
-  }
-  a:visited {
-    text-decoration: none;
-    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
-  }
-  a:hover {
-    text-decoration: none;
-    color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
-  }
-  a:active {
+  a {
     text-decoration: none;
     color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
   }

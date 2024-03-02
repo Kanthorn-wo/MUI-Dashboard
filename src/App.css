@@ -38,6 +38,17 @@
 }
 
 
+/* Hide the scrollbar but allow scrolling */
+body::-webkit-scrollbar {
+  width: 0;  /* This will hide the vertical scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* Optional: make scrollbar track transparent */
+}
+
+
+
 .box {
   width: 100px;
   height: 100px;
