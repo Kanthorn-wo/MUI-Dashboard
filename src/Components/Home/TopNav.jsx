@@ -44,7 +44,7 @@ const TopNav = ({ isDarkMode, toggleTheme }) => {
           {menuOpen ? (
             <>
               <MenuItems isDarkMode={isDarkMode}>
-                <CloseButton onClick={handleCloseMenu} ><CloseIcon /></CloseButton>
+                <CloseButton onClick={handleCloseMenu} isDarkMode={isDarkMode} ><CloseIcon /></CloseButton>
                 <MenuItem>
                   <a href='https://github.com/Kanthorn-wo'>
                     <GitHubIcon style={{ marginRight: "10px" }} />Github
@@ -60,7 +60,7 @@ const TopNav = ({ isDarkMode, toggleTheme }) => {
 
             </>
           ) : (
-            <HamburgerButton onClick={handleMenuToggle}>
+            <HamburgerButton onClick={handleMenuToggle} isDarkMode={isDarkMode}>
               &#9776;
             </HamburgerButton>
           )}
@@ -131,6 +131,7 @@ const HamburgerButton = styled.button`
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -143,6 +144,7 @@ const CloseButton = styled.button`
   cursor: pointer;
   margin-bottom: 15px;
   align-self: flex-start;
+  color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
   @media screen and (min-width: 768px) {
     display: none;
   
@@ -161,7 +163,7 @@ const SwithDarkMode = styled.label`
 `
 const StyledText = styled.a`
   font-family: Arial, sans-serif; /* Choose a font */
-  font-size: 1.5rem; /* Set the font size */
+  font-size: 1.3rem; /* Set the font size */
   color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
   text-decoration: none;
   @media screen and (max-width: 768px) {

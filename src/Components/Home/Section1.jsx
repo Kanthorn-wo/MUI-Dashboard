@@ -6,6 +6,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 const Section1 = ({ isDarkMode }) => {
   const [textColor, setTextColor] = useState('black');
 
+  const sizeWindow = window.innerWidth;
   return (
     <ContainerSection1>
       <AboutMe isDarkMode={isDarkMode}>
@@ -19,7 +20,7 @@ const Section1 = ({ isDarkMode }) => {
       <div
 
         style={{
-          fontSize: '35px',
+          fontSize: sizeWindow > 768 ? '35px' : '28px',
           color: textColor,
 
         }}
@@ -102,5 +103,6 @@ const Paragraph = styled.p`
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   color: ${(props) => (props.isDarkMode ? '#ffffff' : '#333333')};
+ 
 `;
 
