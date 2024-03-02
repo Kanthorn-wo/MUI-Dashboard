@@ -163,7 +163,7 @@ const SwithDarkMode = styled.label`
 `
 const StyledText = styled.a`
   font-family: Arial, sans-serif; /* Choose a font */
-  font-size: 1.5rem; /* Set the font size */
+  font-size: 1.3rem; /* Set the font size */
   color: ${props => props.isDarkMode ? '#ffffff' : '#333333'};
   text-decoration: none;
   @media screen and (max-width: 768px) {
