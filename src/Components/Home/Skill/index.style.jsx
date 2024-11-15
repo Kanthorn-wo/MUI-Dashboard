@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ContainerSkill = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 10px;
 `;
 
 export const SkillCard = styled.div`
@@ -16,10 +17,11 @@ export const SkillCard = styled.div`
 export const SubSkillCard = styled.div`
   display: inline;
   transition: all 0.2s ease;
-  font-size: 2.4rem;
-
+  filter: grayscale(100%) drop-shadow(5px 5px 4px #dddddd);
   &:hover {
     transform: scale(1.1);
+    filter: none;
+
   }
 `;
 
